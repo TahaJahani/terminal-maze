@@ -6,8 +6,10 @@ import termios
 import tty
 import os
 
-WIDTH = 39
-HEIGHT = 39
+width, height = os.get_terminal_size()
+width /= 2
+WIDTH = int(width) if width % 2 == 1 else int(width - 1)
+HEIGHT = height - 2 if height % 2 == 1 else height - 3
 EMPTY = '  '
 WALL = "\033[37;47m"
 RESEST = "\033[m"
